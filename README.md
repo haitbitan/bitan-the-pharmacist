@@ -1,95 +1,110 @@
-# SUSHMITA — THE SERIES
+# Bitan Hait — The Pharmacist
 
-A cinematic, streaming-inspired portfolio for **Sushmita Dasari**: Full-Stack Developer and B.Tech AI & ML student.
-Every section is an episode, every project is an Original, and the whole site plays like a series.
+A beginner-friendly portfolio built to look like a streaming series. Every section is an episode, every project is an Original, and the site plays like a show you can browse.
 
-> A personal portfolio with a fictional streaming-platform look. It is not affiliated with Netflix or any other streaming service and uses none of their logos.
+> This is a personal project with a streaming-platform theme. It is not affiliated with Netflix or any other streaming service and uses none of their logos.
 
-## Run it locally
+## What is this?
 
-Requires **Node.js 18+**.
+This is a portfolio website — a personal page that shows who you are, what you've built, and how to contact you. It was made with React (a tool for building websites) and Vite (a tool that bundles your code so it loads fast).
+
+## Run it on your computer
+
+You need **Node.js** installed (version 18 or newer). Download it from https://nodejs.org/ if you don't have it.
+
+Open your terminal in this folder and run:
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open the URL Vite prints (usually http://localhost:5173).
+This installs the project's tools and starts a local website on your computer (usually at http://localhost:5173). Open that link in your browser to see the site.
 
-Production build:
+To build the site for the internet:
 
 ```bash
 npm run build
 npm run preview
 ```
 
-The static site is written to `dist/` and can be deployed as-is to Vercel, Netlify, GitHub Pages or any static host.
+`npm run build` creates a `dist/` folder with the finished website. `npm run preview` lets you check that build locally before putting it online.
 
-## Updating the content
+## Putting it online (hosting)
 
-**All content lives in one file: [`src/data/portfolio.ts`](src/data/portfolio.ts).** It was generated from the resume, and every component reads from it.
+The `dist/` folder is a static website — you can host it for free on:
+
+- **Vercel** (recommended)
+- **Netlify**
+- **GitHub Pages**
+- Any static site host
+
+Connect your GitHub repo, set the build command to `npm run build`, and set the output folder to `dist`.
+
+## Changing the content
+
+Almost everything on the site lives in one file: [`src/data/portfolio.ts`](src/data/portfolio.ts). Edit that file to change your info, then rebuild and redeploy.
 
 | To change… | Edit |
 | --- | --- |
-| Name, intro, email, LinkedIn, GitHub | `profile` |
-| A project, or a new one | `projects` (add an object; it appears in Originals, the overlay, the resume sheet and the counts) |
+| Your name, intro, email, LinkedIn, GitHub | `profile` |
+| A project (or add a new one) | `projects` |
 | Achievements / certifications | `achievements`, `certifications` |
-| Skills and their "where it's used" notes | `skillCategories`, `skillEvidence` |
-| Seasons and episodes (My Journey) | `seasons` |
+| Skills and where you've used them | `skillCategories`, `skillEvidence` |
+| Your journey (seasons and episodes) | `seasons` |
 | Top 10 row | `topPicks` |
-| ▶ Play Intro highlight reel | `introSlides` |
-| Profile order (Recruiter / Developer / Creative) | `viewerProfiles` |
+| Intro highlight reel | `introSlides` |
+| Profile order | `viewerProfiles` |
 | Opening studio card text | `profile.originalLabel` |
 
-**Resume:** replace `public/assets/Sushmita_Dasari_Resume.pdf`.
+**Resume:** replace `public/assets/Bitan_Hait_Resume.pdf` with your own PDF.
 
-**Photo:** replace `pic1.jpeg` (high-res photo) and `pic.png` (background-removed cutout with the same framing), then run:
+**Photo:** replace `pic1.jpeg` (your photo) and `pic.png` (background-removed cutout), then run:
 
 ```bash
 npm run images
 ```
 
-This rebuilds the responsive WebP portraits and the social share image in `public/assets/`.
+This makes smaller, web-friendly versions of your images.
 
 ## What's inside
 
 ```
 src/
-  data/portfolio.ts        ← single source of truth (from the resume)
-  App.tsx                  ← stages: opening → profile select → home; overlays
+  data/portfolio.ts   ← all your content in one file
+  App.tsx             ← main app: opening → pick profile → home page
   components/
-    OpeningSequence        ← black → studio card → SUSHMITA → THE SERIES → portrait → ▶ PLAY
-    ProfileSelector        ← "Who's watching?" (changes section order only)
-    Navbar                 ← hide-on-scroll nav, profile switcher, mobile menu
-    Hero                   ← billboard: parallax portrait, particles, light streaks, floating chips
-    PlayIntro              ← ▶ Play Intro: zoom into portrait → highlight reel (pause, ← →, tap zones)
-    ContinueWatching       ← cards with real "watched" progress bars
-    About                  ← The Pilot
-    Seasons / EpisodeCard  ← My Journey as seasons and episodes
-    Originals / ProjectCard← pinned horizontal sequence on desktop, swipe rail on touch
-    ProjectModal           ← full-screen project overlay with a shared-element transition
-    TopPicks               ← Top 10-style row
-    Skills                 ← skill genres; each card shows where the skill appears
-    Achievements           ← award-poster cards + certification rail (links to credentials)
-    ResumeViewer/ResumeModal ← designed resume sheet, PDF viewer, download
-    FinalCTA               ← TO BE CONTINUED… + contact links
-    CustomCursor, fx.tsx   ← cursor states, magnetic buttons, 3D tilt, text reveals, particles
-  hooks/                   ← Lenis smooth scroll + scroll lock, media queries, watch progress
-scripts/build-images.mjs   ← portrait/share-image pipeline (sharp)
+    OpeningSequence   ← the intro animation that plays first
+    ProfileSelector   ← lets viewers choose a profile view
+    Navbar            ← top navigation bar
+    Hero              ← big banner at the top of the home page
+    PlayIntro         ← the highlight reel player
+    ContinueWatching  ← cards showing progress on projects
+    About             ← "The Pilot" — about you
+    Seasons / EpisodeCard ← your journey as seasons and episodes
+    Originals / ProjectCard ← your projects
+    ProjectModal      ← full-screen project details
+    TopPicks          ← top 10 style row
+    Skills            ← your skills with examples
+    Achievements      ← awards and certifications
+    ResumeViewer/ResumeModal ← your resume viewer and download
+    FinalCTA          ← "to be continued" + contact links
+    CustomCursor, fx.tsx ← visual effects (cursor, tilt, particles)
+  hooks/              ← smooth scrolling and media helpers
+scripts/build-images.mjs ← script that prepares your images
 ```
 
-**Stack:** React 18, TypeScript, Vite 6, Tailwind CSS 4, Framer Motion 11, Lenis.
+**Tools used:** React 18, TypeScript, Vite 6, Tailwind CSS 4, Framer Motion 11, Lenis.
 
-## Accessibility and performance
+## Making it easier to use
 
-- `prefers-reduced-motion` is respected: smooth scroll, the custom cursor, tilt, particles, grain and the pinned horizontal scroll turn off, and the opening jumps straight to its final frame.
-- Hover effects only run on devices with a precise pointer. Touch devices get tap interactions and native swipe rails.
-- The custom cursor appears only with a mouse or trackpad.
-- Overlays close with Esc, and the highlight reel supports Space and the ← → keys.
-- Portraits are responsive WebP files (25–90 KB). Overlays are code-split, and particles pause when they're off screen.
+- If you prefer less motion, the site respects your "reduce motion" setting and turns off animations.
+- On touch devices, you get tap-friendly controls instead of hover effects.
+- Overlays close with the **Esc** key.
+- In the intro reel: **Space** pauses, **← →** changes slides, **Esc** closes.
 
 ## Keyboard shortcuts
 
-- **Opening:** Enter or Esc skips it.
-- **Play Intro:** Space pauses, ← and → change slides, Esc closes.
-- **Project and resume overlays:** Esc closes.
+- **Opening:** Press **Enter** or **Esc** to skip the intro.
+- **Intro reel:** **Space** pauses, **← →** moves between slides, **Esc** closes.
+- **Project / resume overlays:** **Esc** closes.
